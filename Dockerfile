@@ -5,16 +5,11 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-RUN ls .
-
 ARG FROM_EMAIL
 ENV FROM_EMAIL $FROM_EMAIL
 
 ARG RESEND_KEY
 ENV RESEND_KEY $RESEND_KEY
-
-RUN sed -i "s/\!KEY\!/$RESEND_KEY/" ./api/send/route.ts
-RUN sed -i "s/\!EMAIL\!/$FROM_EMAIL/" ./api/send/route.ts
 
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
 RUN \
@@ -28,6 +23,9 @@ RUN \
   WORKDIR /app
   COPY --from=deps /app/node_modules ./node_modules
   COPY . .
+
+  RUN sed -i "s/\!KEY\!/$RESEND_KEY/" ./api/send/route.ts
+  RUN sed -i "s/\!EMAIL\!/$FROM_EMAIL/" ./api/send/route.ts
 
   RUN \
   if [ -f yarn.lock ]; then yarn run build; \
