@@ -5,6 +5,9 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
+ARG FROM_EMAIL
+ENV FROM_EMAIL $FROM_EMAIL
+
 RUN echo $FROM_EMAIL
 
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
