@@ -1,4 +1,4 @@
-
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export default function ProjectTag({name, onClick, isSelected}: {name: string, onClick: any, isSelected: boolean}) {
     const buttonStyles = isSelected 
     ? "text-white border-red-500" : "text[#ADB7BE] border-slate-600 hover:border-white"
