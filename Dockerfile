@@ -1,6 +1,6 @@
-FROM node:22.13.0-alpine as base
+FROM node:22.13.0-alpine AS base
 
-FROM base as deps
+FROM base AS deps
 
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
