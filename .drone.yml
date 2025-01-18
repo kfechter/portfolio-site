@@ -12,6 +12,9 @@ steps:
     repo: kfechter/portfolio-site
     tags:
     - latest
+    build_args_from_env:
+     - FROM_EMAIL
+     - RESEND_KEY
   environment:
     FROM_EMAIL:
       from_secret: from_email
