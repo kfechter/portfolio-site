@@ -14,6 +14,9 @@ ENV RESEND_KEY $RESEND_KEY
 RUN echo "RESEND_API_KEY=$RESEND_KEY" > ./.env
 RUN echo "FROM_EMAIL=$FROM_EMAIL" >> ./.env
 
+RUN sed -i "s/\!KEY\!/$RESEND_KEY/" ./api/send/route.ts
+RUN sed -i "s/\!EMAIL\!/$FROM_EMAIL/" ./api/send/route.ts
+
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \

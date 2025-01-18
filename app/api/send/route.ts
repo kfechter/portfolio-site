@@ -2,8 +2,8 @@ import EmailTemplate from '@/app/components/EmailTemplate';
 import { Resend } from 'resend';
 import * as React from 'react';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.FROM_EMAIL!
+const resend = new Resend('!KEY!');
+const fromEmail = '!EMAIL!'
 
 
 export async function POST(request: Request) {
