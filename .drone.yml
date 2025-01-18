@@ -12,3 +12,8 @@ steps:
     repo: kfechter/portfolio-site
     tags:
     - latest
+  environment:
+    FROM_EMAIL:
+      from_secret: from_email
+    RESEND_KEY:
+      from_secret: resend_key
