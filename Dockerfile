@@ -8,7 +8,14 @@ WORKDIR /app
 ARG FROM_EMAIL
 ENV FROM_EMAIL $FROM_EMAIL
 
-RUN echo $FROM_EMAIL
+ARG RESEND_KEY
+ENV RESEND_KEY $RESEND_KEY
+
+
+RUN echo "RESEND_KEY=$RESEND_KEY" > ./.env
+RUN echo "FROM_EMAIL=$FROM_EMAIL" >> ./.env
+
+RUN cat ./.env
 
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
 RUN \
