@@ -5,6 +5,7 @@ import { useState } from "react"
 export default function SocialSection() {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
 
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     const data = {
