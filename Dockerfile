@@ -24,8 +24,9 @@ RUN \
   COPY --from=deps /app/node_modules ./node_modules
   COPY . .
 
-  RUN sed -i "s/\!KEY\!/$RESEND_KEY/" ./api/send/route.ts
-  RUN sed -i "s/\!EMAIL\!/$FROM_EMAIL/" ./api/send/route.ts
+  RUN ls .
+  #RUN sed -i "s/\!KEY\!/$RESEND_KEY/" ./api/send/route.ts
+  #RUN sed -i "s/\!EMAIL\!/$FROM_EMAIL/" ./api/send/route.ts
 
   RUN \
   if [ -f yarn.lock ]; then yarn run build; \
