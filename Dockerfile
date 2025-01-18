@@ -5,14 +5,13 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
+RUN ls .
+
 ARG FROM_EMAIL
 ENV FROM_EMAIL $FROM_EMAIL
 
 ARG RESEND_KEY
 ENV RESEND_KEY $RESEND_KEY
-
-RUN echo "RESEND_API_KEY=$RESEND_KEY" > ./.env
-RUN echo "FROM_EMAIL=$FROM_EMAIL" >> ./.env
 
 RUN sed -i "s/\!KEY\!/$RESEND_KEY/" ./api/send/route.ts
 RUN sed -i "s/\!EMAIL\!/$FROM_EMAIL/" ./api/send/route.ts
