@@ -11,11 +11,8 @@ ENV FROM_EMAIL $FROM_EMAIL
 ARG RESEND_KEY
 ENV RESEND_KEY $RESEND_KEY
 
-
-RUN echo "RESEND_KEY=$RESEND_KEY" > ./.env
+RUN echo "RESEND_API_KEY=$RESEND_KEY" > ./.env
 RUN echo "FROM_EMAIL=$FROM_EMAIL" >> ./.env
-
-RUN cat ./.env
 
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
 RUN \
